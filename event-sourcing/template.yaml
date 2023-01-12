@@ -26,10 +26,12 @@ Resources:
       ProvisionedThroughput: 
         ReadCapacityUnits: 5
         WriteCapacityUnits: 5
+      TableName : "ESPProductEventStoreTable"  
   EventSourcingPatternStateMachine:
     Type: AWS::Serverless::StateMachine # More info about State Machine Resource: https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/sam-resource-statemachine.html
     Properties:
       DefinitionUri: statemachine/event-sourcing.asl.json
+      Name: "EventSourcingPatternStateMachine"
       DefinitionSubstitutions:
         ESPValidateEventArn: !GetAtt ESPValidateEventFunction.Arn
         ESPProcessProductReceivedArn: !GetAtt ESPProcessProductReceivedFunction.Arn
@@ -56,6 +58,7 @@ Resources:
       CodeUri: functions/validate-event/
       Handler: app.lambda_handler
       Runtime: python3.9
+      FunctionName : "ESPValidateEventFunction"
       Architectures:
         - x86_64
       Policies: # Find out more about SAM policy templates: https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-policy-templates.html
@@ -69,7 +72,7 @@ Resources:
       CodeUri: functions/process-product-received/
       Handler: app.lambda_handler
       Runtime: python3.9
-
+      FunctionName : "ESPProcessProductReceivedFunction"
       Architectures:
         - x86_64
       Policies: # Find out more about SAM policy templates: https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-policy-templates.html
@@ -86,6 +89,7 @@ Resources:
       CodeUri: functions/process-product-shipped/
       Handler: app.lambda_handler
       Runtime: python3.9
+      FunctionName : "ESPProcessProductShippedFunction"
       Architectures:
         - x86_64
       Policies: # Find out more about SAM policy templates: https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-policy-templates.html
@@ -102,6 +106,7 @@ Resources:
       CodeUri: functions/process-product-adjusted/
       Handler: app.lambda_handler
       Runtime: python3.9
+      FunctionName : "ESPProcessProductAdjustedFunction"
       Architectures:
         - x86_64
       Policies: # Find out more about SAM policy templates: https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-policy-templates.html

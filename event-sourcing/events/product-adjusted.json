@@ -1,12 +1,6 @@
 {
     "version": "0",
     "id": "cea70530-641d-9b53-1146-44c075c6ff77",
-    "detail-type": "testing",
-    "source": "testing",
-    "account": "012345678901",
-    "time": "2023-01-05T19:20:38Z",
-    "region": "us-east-1",
-    "resources": [],
     "detail": {
       "ProductEvent": {
         "eventId": "100",
