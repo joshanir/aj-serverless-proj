@@ -1,11 +1,11 @@
 # Event Sourcing Pattern
 This workflow demonstrates how to implement the event sourcing design pattern using AWS Step Functions. 
 
-The example implementation demonstrates a mock product inventory workflow. All product inventory events are handled a Step Function workflow which executes series of task and persists the state of a business entity (Product) as a sequence of state-changing events. Each task contains mock logic that process a specific product event (productReceived, ProductShipped etc.) and then passes on the updated product state to the next processing task. The updated product state changes along with input event is finally stored in the Product Inventory Event log.
+The example implementation demonstrates a mock product inventory workflow. All product inventory events are sent to a Step Function workflow which executes series of task and persists the state of a business entity (Product) as a sequence of state-changing events. Each task contains mock logic that processes a specific product event (ex: productReceived, ProductShipped etc.). It then passes on the updated product state to the next processing task. The updated product state changes along with input event is stored in the Product Inventory Event log.
 
 This project contains source code and supporting files for a serverless application that you can deploy with the SAM CLI. It includes the following files and folders:
 
-- functions - Code for the application's Lambda functions to process different product inventory events (samples : Product Created, Shipped, Adjusted)
+- functions - Code for the application's Lambda functions to process different product inventory events.
 - statemachines - Definition for the state machine that orchestrates product inventory workflow.
 - template.yaml - A template that defines the application's AWS resources.
 
