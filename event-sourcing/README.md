@@ -64,22 +64,14 @@ event-sourcing$ sam build
 The SAM CLI installs dependencies defined in `functions/*/requirements.txt`, creates a deployment package, and saves it in the `.aws-sam/build` folder.
 
 
-## How it works
-
-1. When the task state "Step Functions Run Activity" runs the Activity "TestActivity", the workflow execution pauses for activity worker to poll the task using "GetActivityTask" API call.
-2. Once the activity worker(Lambda function) polls for the task, then the workflow waits for "Timeout" seconds, thus allowing worker to return it's success/failure/heartbeat.
-3. The workflow execution succeeds only if the activity worker has completed it's execution succesfully.
-
-![image](./resources/StateMachine.png)
-
-
-## Testing
+## How it works and Testing
 
 1. After deployment, navigate to AWS Step Functions console and select the "EventSourcingPatternStateMachine" workflow.
 2. Select 'Start Execution' and use any sample JSON data provided under "events" folder to test "Product Received", "Product Shipped", "Product Adjusted" events
 3. Based on the type of iput event, workflow routes the processing to respective Lambda function which processes the event using mock logic.
 4. Each lambda function outputs updated product state changes along with input event to the next step, which persists the data in event log (DynamoDB table => ESPProductEventStoreTable)
 5. Observe the State Machine workflow execution.
+![image](./resources/event-sourcing.png)
 
 ## Cleanup
  
