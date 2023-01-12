@@ -10,6 +10,8 @@ This project contains source code and supporting files for a serverless applicat
 
 The application uses several AWS resources, including Step Functions state machines, Lambda functions and DynamoDB. These resources are defined in the `template.yaml` file in this project. You can update the template to add AWS resources through the same deployment process that updates your application code.
 
+I m just updatung t
+
 ## Requirements
 
 * [Create an AWS account](https://portal.aws.amazon.com/gp/aws/developer/registration/index.html) if you do not already have one and log in. The IAM user that you use must have sufficient permissions to make necessary AWS service calls and manage AWS resources.
